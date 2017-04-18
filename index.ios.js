@@ -9,21 +9,30 @@ import {
   Text,
   View,
   Image,
+  TextInput,
 } from 'react-native';
 
-import meIcon from './app/images/me.jpeg';
-
 export default class AwesomeProject extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: '',
+    };
+  }
+
   render() {
     const movie = MOCKED_MOVIES_DATA[0];
     return (
-      <View style={styles.container}>
-        <Image source={meIcon} style={styles.thumbnail} />
-        <Text >center text</Text>
-        <View >
-          <Text>{movie.title}</Text>
-          <Text>{movie.year}</Text>
-        </View>
+      <View style={{padding: 10}}>
+        <TextInput
+          style={{height: 40}}
+          placeholder="input text"
+          onChangeText={(text) => this.setState({text})}
+        />
+        <Text>
+          {this.state.text.split(' ').map((word) => word && '?').join(',')}
+        </Text>
+
       </View>
     );
   }
