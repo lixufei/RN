@@ -19,8 +19,8 @@ export default class AwesomeProject extends Component {
     return (
       <View style={styles.container}>
         <Image source={meIcon} style={styles.thumbnail} />
-        <Text style={styles.centerText}>center text</Text>
-        <View style={styles.title}>
+        <Text >center text</Text>
+        <View >
           <Text>{movie.title}</Text>
           <Text>{movie.year}</Text>
         </View>
@@ -33,8 +33,8 @@ var styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
     backgroundColor: '#F5FCFF',
   },
   thumbnail: {
