@@ -12,7 +12,19 @@ import {
   TextInput,
 } from 'react-native';
 
-export default class AwesomeProject extends Component {
+export class UselessTextInput extends Component {
+  render () {
+    return (
+      <TextInput
+        {...this.props}
+        editable={true}
+        maxLength={10}
+      />
+    );
+  }
+}
+
+export class AwesomeProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,18 +33,19 @@ export default class AwesomeProject extends Component {
   }
 
   render() {
-    const movie = MOCKED_MOVIES_DATA[0];
     return (
-      <View style={{padding: 10}}>
-        <TextInput
+      <View style={{padding: 10, backgroundColor: this.state.text}}>
+        <UselessTextInput
           style={{height: 40}}
+          multiline={true}
+          numberOfLines={4}
           placeholder="input text"
           onChangeText={(text) => this.setState({text})}
+          value={this.state.text}
         />
         <Text>
           {this.state.text.split(' ').map((word) => word && '?').join(',')}
         </Text>
-
       </View>
     );
   }
