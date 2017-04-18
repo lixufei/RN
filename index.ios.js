@@ -10,19 +10,10 @@ import {
   View,
   Image,
   TextInput,
+  ScrollView,
 } from 'react-native';
 
-export class UselessTextInput extends Component {
-  render () {
-    return (
-      <TextInput
-        {...this.props}
-        editable={true}
-        maxLength={10}
-      />
-    );
-  }
-}
+import MeIcon from './app/images/me.jpeg';
 
 export class AwesomeProject extends Component {
   constructor(props) {
@@ -34,19 +25,39 @@ export class AwesomeProject extends Component {
 
   render() {
     return (
-      <View style={{padding: 10, backgroundColor: this.state.text}}>
-        <UselessTextInput
-          style={{height: 40}}
-          multiline={true}
-          numberOfLines={4}
-          placeholder="input text"
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text}
-        />
-        <Text>
-          {this.state.text.split(' ').map((word) => word && '?').join(',')}
-        </Text>
-      </View>
+      <ScrollView horizontal={true}>
+        <Text>Scroll me down</Text>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Text>Scroll me down</Text>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Text>Scroll me down</Text>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Text>Scroll me like</Text>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Text>Scroll me confident</Text>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+        <Image source={MeIcon} style={styles.thumbnail}/>
+
+      </ScrollView>
     );
   }
 }
