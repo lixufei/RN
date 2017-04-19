@@ -11,6 +11,7 @@ import {
   Image,
   TextInput,
   ScrollView,
+  ListView,
 } from 'react-native';
 
 import MeIcon from './app/images/me.jpeg';
@@ -18,46 +19,21 @@ import MeIcon from './app/images/me.jpeg';
 export class AwesomeProject extends Component {
   constructor(props) {
     super(props);
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       text: '',
+      dataSource: ds.cloneWithRows(['li', 'xufei', 'is', 'a', 'beauty']),
     };
   }
 
   render() {
     return (
-      <ScrollView horizontal={true}>
-        <Text>Scroll me down</Text>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Text>Scroll me down</Text>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Text>Scroll me down</Text>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Text>Scroll me like</Text>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Text>Scroll me confident</Text>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-        <Image source={MeIcon} style={styles.thumbnail}/>
-
-      </ScrollView>
+      <View style={{flex: 1, paddingTop: 20}}>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={(r) => <Text>r</Text>}
+        />
+      </View>
     );
   }
 }
