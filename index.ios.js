@@ -12,6 +12,7 @@ import {
   TextInput,
   ScrollView,
   ListView,
+  Button,
 } from 'react-native';
 
 import MeIcon from './app/images/me.jpeg';
@@ -19,20 +20,38 @@ import MeIcon from './app/images/me.jpeg';
 export class AwesomeProject extends Component {
   constructor(props) {
     super(props);
+    this.getMoviesFromApiAsync = this.getMoviesFromApiAsync.bind(this);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       text: '',
       dataSource: ds.cloneWithRows(['li', 'xufei', 'is', 'a', 'beauty']),
+      title: '',
     };
+  }
+
+  getMoviesFromApiAsync() {
+    return fetch('https://facebook.github.io/react-native/movies.json')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({
+          title: responseJson.title,
+        });
+        return responseJson.movies;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   render() {
     return (
       <View style={{flex: 1, paddingTop: 20}}>
+        <Text style={{backgroundColor: 'red'}}>{this.state.title}</Text>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={(r) => <Text>r</Text>}
+          renderRow={(r) => <Text>{r}</Text>}
         />
+        <Button onPress={this.getMoviesFromApiAsync()}>submit</Button>
       </View>
     );
   }
