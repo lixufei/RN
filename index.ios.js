@@ -1,7 +1,3 @@
-var MOCKED_MOVIES_DATA = [
-  { title: '标题', year: '2015'},
-];
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -15,9 +11,7 @@ import {
   Button,
 } from 'react-native';
 
-import MeIcon from './app/images/me.jpeg';
-
-export class AwesomeProject extends Component {
+export default class AwesomeProject extends Component {
   constructor(props) {
     super(props);
     this.getMoviesFromApiAsync = this.getMoviesFromApiAsync.bind(this);
@@ -30,7 +24,6 @@ export class AwesomeProject extends Component {
   }
 
   getMoviesFromApiAsync() {
-    console.log('saync');
     return fetch('https://facebook.github.io/react-native/movies.json')
       .then((response) => response.json())
       .then((responseJson) => {
