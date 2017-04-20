@@ -30,6 +30,7 @@ export class AwesomeProject extends Component {
   }
 
   getMoviesFromApiAsync() {
+    console.log('saync');
     return fetch('https://facebook.github.io/react-native/movies.json')
       .then((response) => response.json())
       .then((responseJson) => {
@@ -51,7 +52,7 @@ export class AwesomeProject extends Component {
           dataSource={this.state.dataSource}
           renderRow={(r) => <Text>{r}</Text>}
         />
-        <Button onPress={this.getMoviesFromApiAsync()}>submit</Button>
+        <Button onPress={this.getMoviesFromApiAsync} title="submit"/>
       </View>
     );
   }
